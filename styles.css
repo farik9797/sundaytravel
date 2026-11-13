@@ -106,14 +106,6 @@ h1, h2, h3 { font-weight: 800; letter-spacing: -0.025em; line-height: 1.08; text
 .hero__row { display: flex; align-items: center; gap: clamp(20px, 3vw, 44px); margin-top: 30px; }
 .hero__script { position: relative; font: 700 clamp(1.75rem, 1.6vw + 1rem, 2.4rem)/1 var(--script); color: #1d1d1d; transform: rotate(-9deg); padding-bottom: 10px; }
 .hero__script::after { content: ""; position: absolute; left: 18%; right: -6%; bottom: -4px; height: 10px; border-bottom: 4px solid var(--orange); border-radius: 0 0 60% 40% / 0 0 100% 100%; transform: rotate(2deg); }
-.hero__toggle { position: absolute; left: var(--pad); bottom: 18px; display: grid; place-items: center; width: 40px; height: 40px; padding: 0; border: 0; border-radius: 50%; background: rgba(255, 255, 255, 0.85); color: var(--text); font-size: 1rem; cursor: pointer; box-shadow: var(--shadow-soft); transition: background 0.2s var(--ease); }
-.hero__toggle:hover { background: #fff; }
-/* кнопка паузы появляется при наведении на hero или фокусе с клавиатуры; на сенсорных экранах видна всегда */
-@media (hover: hover) {
-  .hero__toggle { opacity: 0; transition: opacity 0.25s var(--ease), background 0.2s var(--ease); }
-  .hero:hover .hero__toggle, .hero__toggle:focus-visible { opacity: 1; }
-}
-.hero__toggle[hidden] { display: none; }
 
 /* форма бронирования */
 .book { flex: 0 0 340px; min-width: 0; display: grid; gap: 10px; padding: 22px 20px 16px; background: rgba(255, 255, 255, 0.96); border-radius: var(--r); box-shadow: 0 24px 50px -24px rgba(60, 30, 0, 0.45); }
@@ -303,7 +295,6 @@ h1, h2, h3 { font-weight: 800; letter-spacing: -0.025em; line-height: 1.08; text
   .hero__text { order: 1; padding: 8px var(--pad) 0; }
   .hero__video { order: 2; position: relative; inset: auto; z-index: 0; width: 100%; height: auto; aspect-ratio: 16 / 9; margin-top: 28px; object-fit: cover; -webkit-mask-image: none; mask-image: none; }
   .book { order: 4; flex: none; margin: 16px var(--pad) 0; }
-  .hero__toggle { order: 3; position: relative; left: auto; bottom: auto; z-index: 1; align-self: flex-end; margin: -52px var(--pad) 12px 0; }
   .strip { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 0; }
   .strip__item:nth-child(3) { border-left: 0; }
   .why__list { width: 100%; }

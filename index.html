@@ -117,7 +117,6 @@
         <p class="book__note"><i class="ph-fill ph-shield-check" aria-hidden="true"></i>Быстрый ответ<br>в Telegram</p>
       </form>
     </div>
-    <button class="hero__toggle" type="button" aria-label="Включить видео" hidden><i class="ph-fill ph-play" aria-hidden="true"></i></button>
   </section>
 
   <section class="wrap" aria-label="Коротко о нас"><div class="strip">
@@ -421,18 +420,9 @@
 (() => {
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // hero-видео: без автозапуска при «уменьшении движения», видимая кнопка паузы (цикл длиннее 5 с)
+  // hero-видео: без автозапуска при «уменьшении движения», тогда виден постер
   const video = document.querySelector('.hero__video');
-  const toggle = document.querySelector('.hero__toggle');
-  const setState = (playing) => {
-    toggle.setAttribute('aria-label', playing ? 'Остановить видео' : 'Включить видео');
-    toggle.querySelector('i').className = 'ph-fill ' + (playing ? 'ph-pause' : 'ph-play');
-  };
-  toggle.hidden = false;
-  toggle.addEventListener('click', () => (video.paused ? video.play() : video.pause()));
-  video.addEventListener('play', () => setState(true));
-  video.addEventListener('pause', () => setState(false));
-  if (!reduce) video.play().catch(() => setState(false));
+  if (!reduce) video.play().catch(() => {});
 
   // заявки уходят менеджеру в Telegram готовым текстом
   const tg = (text) => window.open('https://t.me/Sundaytraveluz?text=' + encodeURIComponent(text), '_blank', 'noopener');
