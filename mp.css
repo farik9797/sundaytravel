@@ -253,6 +253,24 @@
   .area--link a:hover h3 i { transform: none; }
 }
 
+/* шапки внутренних страниц появляются так же, как hero главной */
+.js .phead .wrap > *, .js .thero .crumbs, .js .thero__text > *, .js .thero__buy, .js .phead__img { animation: hero-in 0.8s var(--ease) both; }
+.js .thero__card { animation: hero-fade 0.9s ease-out both; }
+.js .phead .wrap > :nth-child(2), .js .thero__text > :nth-child(2) { animation-delay: 0.1s; }
+.js .phead .wrap > :nth-child(3), .js .thero__text > :nth-child(3) { animation-delay: 0.2s; }
+.js .phead .wrap > :nth-child(4), .js .thero__text > :nth-child(4) { animation-delay: 0.3s; }
+.js .phead .wrap > :nth-child(5), .js .thero__buy { animation-delay: 0.4s; }
+.js .phead--photo .phead__text > * { animation: hero-in 0.8s var(--ease) both; }
+.js .phead--photo .wrap > *, .js .phead--photo .phead__text > :first-child { animation-delay: 0s; }
+.js .phead--photo .phead__text > :nth-child(2) { animation-delay: 0.1s; }
+.js .phead--photo .phead__text > :nth-child(3) { animation-delay: 0.2s; }
+.js .phead--photo .phead__text > :nth-child(4) { animation-delay: 0.3s; }
+.js .phead--photo .phead__img { animation-delay: 0.25s; }
+.js .phead--photo .phead__text { animation: none; }
+@media (prefers-reduced-motion: reduce) {
+  .js .phead .wrap > *, .js .thero .crumbs, .js .thero__text > *, .js .thero__buy, .js .phead__img, .js .thero__card, .js .phead--photo .phead__text > * { animation: none; }
+}
+
 /* ===== каталог и продающая страница тура ===== */
 html:has(.tnav) { scroll-padding-top: 140px; }
 

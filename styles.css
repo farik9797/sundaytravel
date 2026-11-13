@@ -391,6 +391,9 @@ html:has(.modal[open]) { overflow: hidden; }
   /* фраза занимает 80 px внутри видео: начинается на 100 px выше его нижнего края, кнопка встаёт на 24 px ниже видео */
   .hero__script { order: 4; position: relative; z-index: 1; align-self: flex-start; height: 80px; margin: -100px 0 44px calc(var(--pad) + 8px); color: #fff; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.35), 0 4px 18px rgba(0, 0, 0, 0.5); }
   .hero__row .btn { order: 5; align-self: stretch; margin: 0 var(--pad); }
+  .js .hero__script { animation-delay: 0.42s; }
+  .js .hero__row .btn { animation-delay: 0.54s; }
+  .js .hero .book { animation-delay: 0.66s; }
   .book { order: 6; flex: none; margin: 16px var(--pad) 0; }
   .strip { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 0; }
   .strip__item:nth-child(3) { border-left: 0; }
@@ -444,6 +447,20 @@ html:has(.modal[open]) { overflow: hidden; }
   .cta--mascot, .cta--wide { margin-top: clamp(28px, 2.8vw, 40px); }
 }
 
+/* вход hero при загрузке: видео проявляется, тексты, кнопка и форма выезжают по очереди, в конце дорисовывается подчёркивание фразы.
+   translate и scale, а не transform: у фразы и подчёркивания свой поворот, он сохраняется */
+@keyframes hero-in { from { opacity: 0; translate: 0 22px; } }
+@keyframes hero-fade { from { opacity: 0; } }
+@keyframes line-draw { from { scale: 0 1; } }
+.js .hero__video { animation: hero-fade 1.2s ease-out both; }
+.js .hero h1, .js .hero__lead, .js .hero__row .btn, .js .hero__script, .js .hero .book { animation: hero-in 0.8s var(--ease) both; }
+.js .hero h1 { animation-delay: 0.08s; }
+.js .hero__lead { animation-delay: 0.22s; }
+.js .hero__row .btn { animation-delay: 0.36s; }
+.js .hero__script { animation-delay: 0.5s; }
+.js .hero .book { animation-delay: 0.42s; }
+.js .hero__script::after { transform-origin: 0 50%; animation: line-draw 0.7s var(--ease) 1s both; }
+
 /* появление блоков при прокрутке: классы ставит скрипт, без JS всё видно сразу */
 .rv-on .rv { opacity: 0; transform: translate3d(0, 28px, 0); transition: opacity 0.7s var(--ease) var(--rv-d, 0ms), transform 0.9s var(--ease) var(--rv-d, 0ms); }
 .rv-on .rv.is-in { opacity: 1; transform: none; }
@@ -451,6 +468,7 @@ html:has(.modal[open]) { overflow: hidden; }
 /* движение */
 @media (prefers-reduced-motion: reduce) {
   .rv-on .rv { opacity: 1; transform: none; transition: none; }
+  .js .hero__video, .js .hero h1, .js .hero__lead, .js .hero__row .btn, .js .hero__script, .js .hero .book, .js .hero__script::after { animation: none; }
   .modal[open] .modal__box { animation: none; }
   .nav.is-stuck { animation: none; }
   .nav__logo img { transition: none; }
