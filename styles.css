@@ -443,8 +443,13 @@ html:has(.modal[open]) { overflow: hidden; }
   .cta--mascot, .cta--wide { margin-top: clamp(28px, 2.8vw, 40px); }
 }
 
+/* появление блоков при прокрутке: классы ставит скрипт, без JS всё видно сразу */
+.rv-on .rv { opacity: 0; transform: translate3d(0, 28px, 0); transition: opacity 0.7s var(--ease) var(--rv-d, 0ms), transform 0.9s var(--ease) var(--rv-d, 0ms); }
+.rv-on .rv.is-in { opacity: 1; transform: none; }
+
 /* движение */
 @media (prefers-reduced-motion: reduce) {
+  .rv-on .rv { opacity: 1; transform: none; transition: none; }
   .modal[open] .modal__box { animation: none; }
   .nav.is-stuck { animation: none; }
   .nav__logo img { transition: none; }
