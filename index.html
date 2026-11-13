@@ -46,10 +46,11 @@
     </ul>
     <div class="nav__end">
       <a class="nav__city" href="#ofis"><i class="ph-fill ph-map-pin" aria-hidden="true"></i>Чирчик</a>
-      <a class="nav__soc" href="https://t.me/Sundaytravel" aria-label="Telegram-канал"><i class="ph-fill ph-telegram-logo" aria-hidden="true"></i></a>
-      <a class="nav__soc" href="https://www.instagram.com/sunday_travel.uz" aria-label="Instagram"><i class="ph-bold ph-instagram-logo" aria-hidden="true"></i></a>
-      <a class="nav__soc" href="https://www.facebook.com/share/NtrDHMtj7HvjB6di/" aria-label="Facebook"><i class="ph-fill ph-facebook-logo" aria-hidden="true"></i></a>
-      <a class="btn btn--sm nav__cta" href="https://t.me/Sundaytraveluz"><i class="ph-fill ph-telegram-logo" aria-hidden="true"></i>Написать в Telegram</a>
+      <a class="nav__soc" href="https://t.me/Sundaytravel" aria-label="Telegram-канал"><img src="img/social/telegram-color.svg" width="24" height="24" alt=""></a>
+      <a class="nav__soc" href="https://www.instagram.com/sunday_travel.uz" aria-label="Instagram"><img src="img/social/instagram-color.svg" width="24" height="24" alt=""></a>
+      <a class="nav__soc" href="https://www.facebook.com/share/NtrDHMtj7HvjB6di/" aria-label="Facebook"><img src="img/social/facebook-color.svg" width="24" height="24" alt=""></a>
+      <nav class="lang" aria-label="Язык сайта"><a href="./" lang="ru" hreflang="ru" aria-current="page">RU</a><a href="uz/" lang="uz" hreflang="uz">UZ</a><a href="en/" lang="en" hreflang="en">EN</a></nav>
+      <button class="btn btn--sm nav__cta" type="button" data-open-book><i class="ph-bold ph-calendar-check" aria-hidden="true"></i>Забронировать</button>
       <details class="menu">
         <summary aria-label="Меню"><i class="ph-bold ph-list" aria-hidden="true"></i></summary>
         <ul>
@@ -59,6 +60,7 @@
           <li><a href="#ofis">О нас</a></li>
           <li><a href="#kontakty">Контакты</a></li>
           <li><a href="tel:+998900387500">+998 90 038 75 00</a></li>
+          <li class="menu__lang"><a href="./" lang="ru" aria-current="page">RU</a><a href="uz/" lang="uz">UZ</a><a href="en/" lang="en">EN</a></li>
         </ul>
       </details>
     </div>
@@ -275,7 +277,7 @@
     <div class="cta">
       <i class="cta__plane ph-fill ph-airplane-tilt" aria-hidden="true"></i>
       <div class="cta__text"><h2>Готовы к путешествию?</h2><p>Оставьте заявку — мы подберём идеальный тур!</p></div>
-      <a class="btn btn--dark" href="#zvonok">Оставить заявку<i class="ph-bold ph-arrow-right" aria-hidden="true"></i></a>
+      <button class="btn btn--dark" type="button" data-open-book>Оставить заявку<i class="ph-bold ph-arrow-right" aria-hidden="true"></i></button>
     </div>
   </section>
 
@@ -392,8 +394,8 @@
       <h2>Контакты</h2>
       <ul class="footer__contacts">
         <li><i class="ph-fill ph-phone" aria-hidden="true"></i><a href="tel:+998900387500">+998 90 038 75 00</a></li>
-        <li><i class="ph-fill ph-telegram-logo" aria-hidden="true"></i><a href="https://t.me/Sundaytraveluz">@Sundaytraveluz</a></li>
-        <li><i class="ph-bold ph-instagram-logo" aria-hidden="true"></i><a href="https://www.instagram.com/sunday_travel.uz">@sunday_travel.uz</a></li>
+        <li><img src="img/social/telegram-color.svg" width="20" height="20" alt=""><a href="https://t.me/Sundaytraveluz">@Sundaytraveluz</a></li>
+        <li><img src="img/social/instagram-color.svg" width="20" height="20" alt=""><a href="https://www.instagram.com/sunday_travel.uz">@sunday_travel.uz</a></li>
         <li><i class="ph-fill ph-map-pin" aria-hidden="true"></i>г. Чирчик, ул. Ш. Рашидова, 22</li>
       </ul>
     </div>
@@ -407,14 +409,64 @@
     <p>© 2026 SUNDAY TRAVEL. Все права защищены.</p>
     <p class="footer__legal"><a href="#top">Политика конфиденциальности</a><span aria-hidden="true">|</span><a href="#top">Условия использования</a></p>
     <p class="footer__soc">
-      <a href="https://t.me/Sundaytravel" aria-label="Telegram-канал"><i class="ph-fill ph-telegram-logo" aria-hidden="true"></i></a>
-      <a href="https://www.instagram.com/sunday_travel.uz" aria-label="Instagram"><i class="ph-bold ph-instagram-logo" aria-hidden="true"></i></a>
-      <a href="https://www.facebook.com/share/NtrDHMtj7HvjB6di/" aria-label="Facebook"><i class="ph-fill ph-facebook-logo" aria-hidden="true"></i></a>
+      <a href="https://t.me/Sundaytravel" aria-label="Telegram-канал"><img src="img/social/telegram-color.svg" width="28" height="28" alt=""></a>
+      <a href="https://www.instagram.com/sunday_travel.uz" aria-label="Instagram"><img src="img/social/instagram-color.svg" width="28" height="28" alt=""></a>
+      <a href="https://www.facebook.com/share/NtrDHMtj7HvjB6di/" aria-label="Facebook"><img src="img/social/facebook-color.svg" width="28" height="28" alt=""></a>
     </p>
   </div>
 </footer>
 
-<a class="float-tg" href="https://t.me/Sundaytraveluz" aria-label="Написать в Telegram"><i class="ph-fill ph-telegram-logo" aria-hidden="true"></i></a>
+<a class="float-tg" href="https://t.me/Sundaytraveluz" aria-label="Написать в Telegram"><img src="img/social/telegram-color.svg" width="60" height="60" alt=""></a>
+
+<dialog class="modal" id="book-modal" aria-labelledby="book-modal-t">
+  <form class="modal__box" id="book-form">
+    <button class="modal__close" type="button" data-close aria-label="Закрыть"><i class="ph-bold ph-x" aria-hidden="true"></i></button>
+    <h2 id="book-modal-t"><i class="ph-fill ph-airplane-tilt" aria-hidden="true"></i>Забронировать тур</h2>
+    <p class="modal__lead">Менеджер ответит в Telegram и подберёт отель под ваши даты.</p>
+    <label class="field">
+      <i class="ph ph-globe-hemisphere-west" aria-hidden="true"></i>
+      <span class="field__label">Страна</span>
+      <select name="country" required>
+            <option value="" selected disabled>Выберите страну</option>
+            <option>ОАЭ</option><option>Египет</option><option>Турция</option><option>Грузия</option>
+            <option>Азербайджан</option><option>Вьетнам</option><option>Таиланд</option><option>Катар</option>
+            <option>Оман</option><option>Мальдивы</option><option>Шри-Ланка</option><option>Малайзия</option>
+      </select>
+    </label>
+    <div class="field">
+      <i class="ph ph-calendar-blank" aria-hidden="true"></i>
+      <span class="field__label">Даты поездки</span>
+      <span class="field__dates">
+        <input type="date" name="from" value="2026-12-14" aria-label="Дата вылета">
+        <span aria-hidden="true">–</span>
+        <input type="date" name="to" value="2026-12-21" aria-label="Дата возвращения">
+      </span>
+    </div>
+    <label class="field">
+      <i class="ph ph-users" aria-hidden="true"></i>
+      <span class="field__label">Туристы</span>
+      <select name="tourists">
+        <option>1 взрослый</option>
+        <option selected>2 взрослых</option>
+        <option>2 взрослых и ребёнок</option>
+        <option>2 взрослых и 2 детей</option>
+        <option>3 взрослых</option>
+      </select>
+    </label>
+    <label class="field">
+      <i class="ph ph-user" aria-hidden="true"></i>
+      <span class="field__label">Ваше имя</span>
+      <input type="text" name="name" autocomplete="name" placeholder="Как к вам обращаться" required>
+    </label>
+    <label class="field">
+      <i class="ph ph-phone" aria-hidden="true"></i>
+      <span class="field__label">Телефон</span>
+      <input type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="+998 90 000 00 00" required>
+    </label>
+    <button class="btn btn--block" type="submit">Отправить заявку<i class="ph-bold ph-arrow-right" aria-hidden="true"></i></button>
+    <p class="modal__note">Или позвоните: <a href="tel:+998900387500">+998 90 038 75 00</a></p>
+  </form>
+</dialog>
 
 <script>
 (() => {
@@ -453,6 +505,22 @@
     b.setAttribute('aria-pressed', on);
     b.querySelector('i').className = (on ? 'ph-fill' : 'ph') + ' ph-heart';
   }));
+
+  // попап «Забронировать»: заявка уходит менеджеру в Telegram готовым текстом
+  const modal = document.getElementById('book-modal');
+  const modalForm = document.getElementById('book-form');
+  document.querySelectorAll('[data-open-book]').forEach((b) => b.addEventListener('click', () => {
+    modal.showModal();
+    modalForm.country.focus();
+  }));
+  modal.querySelector('[data-close]').addEventListener('click', () => modal.close());
+  modal.addEventListener('click', (e) => { if (e.target === modal) modal.close(); });
+  modalForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const f = new FormData(modalForm);
+    tg(`Здравствуйте! Хочу забронировать тур: ${f.get('country')}, даты ${fmt(f.get('from'))}–${fmt(f.get('to'))}, ${f.get('tourists')}. Имя: ${f.get('name')}, телефон: ${f.get('phone')}.`);
+    modal.close();
+  });
 
   // слайдер горящих туров: кнопки листают на ширину видимой части
   const tours = document.getElementById('tours');
