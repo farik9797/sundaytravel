@@ -83,7 +83,7 @@
         </div>
       </div>
 
-      <form class="book" id="podbor" aria-labelledby="podbor-t">
+      <form class="book" id="podbor" aria-labelledby="podbor-t" novalidate>
         <h2 id="podbor-t"><i class="ph-fill ph-airplane-tilt" aria-hidden="true"></i>Бронирование тура</h2>
         <label class="field">
           <i class="ph ph-globe-hemisphere-west" aria-hidden="true"></i>
@@ -298,7 +298,7 @@
   </section>
 
   <section class="wrap duo">
-    <form class="call" id="zvonok" aria-labelledby="zvonok-t">
+    <form class="call" id="zvonok" aria-labelledby="zvonok-t" novalidate>
       <div class="call__body">
         <div class="call__head">
           <span class="call__ico"><i class="ph-fill ph-phone-call" aria-hidden="true"></i></span>
@@ -424,7 +424,7 @@
 
 <dialog class="modal" id="book-modal" aria-labelledby="book-modal-t">
   <img class="modal__mascot" src="../img/mascot/popup-agent.webp" width="400" height="760" alt="">
-  <form class="modal__box" id="book-form">
+  <form class="modal__box" id="book-form" novalidate>
     <button class="modal__close" type="button" data-close aria-label="Закрыть"><i class="ph-bold ph-x" aria-hidden="true"></i></button>
     <h2 id="book-modal-t"><i class="ph-fill ph-airplane-tilt" aria-hidden="true"></i>Забронировать тур</h2>
     <p class="modal__lead">Менеджер ответит в Telegram и подберёт отель под ваши даты.</p>
@@ -484,15 +484,49 @@
   // заявки уходят менеджеру в Telegram готовым текстом
   const tg = (text) => window.open('https://t.me/Sundaytraveluz?text=' + encodeURIComponent(text), '_blank', 'noopener');
   const fmt = (v) => v ? v.split('-').reverse().join('.') : '';
+
+  // проверка полей: пустое обязательное поле подсвечивается, под ним подсказка, фокус переходит на него
+  const HINT = { country: 'Выберите страну', phone: 'Укажите телефон', name: 'Укажите имя' };
+  const clearHint = (el) => {
+    const box = el.closest('.field, .pill-field');
+    box.classList.remove('is-invalid');
+    box.querySelector('.field__error')?.remove();
+    el.removeAttribute('aria-invalid');
+  };
+  const valid = (form) => {
+    const fields = [...form.querySelectorAll('[required]')];
+    fields.forEach(clearHint);
+    const bad = fields.filter((el) => !el.value.trim());
+    bad.forEach((el) => {
+      const box = el.closest('.field, .pill-field');
+      box.classList.add('is-invalid');
+      el.setAttribute('aria-invalid', 'true');
+      const hint = document.createElement('span');
+      hint.className = 'field__error';
+      hint.setAttribute('role', 'alert');
+      hint.textContent = HINT[el.name];
+      box.append(hint);
+    });
+    if (bad.length) {
+      bad[0].focus();
+      if (bad[0].tagName === 'SELECT' && bad[0].showPicker) { try { bad[0].showPicker(); } catch (err) {} }
+    }
+    return !bad.length;
+  };
+  document.querySelectorAll('form [required]').forEach((el) => {
+    el.addEventListener(el.tagName === 'SELECT' ? 'change' : 'input', () => clearHint(el));
+  });
   const book = document.getElementById('podbor');
   book.addEventListener('submit', (e) => {
     e.preventDefault();
+    if (!valid(book)) return;
     const f = new FormData(book);
     tg(`Здравствуйте! Подберите тур: ${f.get('country')}, даты ${fmt(f.get('from'))}–${fmt(f.get('to'))}, ${f.get('tourists')}.`);
   });
   const call = document.getElementById('zvonok');
   call.addEventListener('submit', (e) => {
     e.preventDefault();
+    if (!valid(call)) return;
     const f = new FormData(call);
     tg(`Здравствуйте! Перезвоните мне: ${f.get('phone')}${f.get('time') ? ', ' + f.get('time').toLowerCase() : ''}.`);
   });
@@ -501,6 +535,7 @@
   document.querySelectorAll('[data-country]').forEach((a) => a.addEventListener('click', (e) => {
     e.preventDefault();
     book.country.value = a.dataset.country;
+    clearHint(book.country);
     book.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
     book.country.focus({ preventScroll: true });
   }));
@@ -522,6 +557,7 @@
   modal.addEventListener('click', (e) => { if (e.target === modal) modal.close(); });
   modalForm.addEventListener('submit', (e) => {
     e.preventDefault();
+    if (!valid(modalForm)) return;
     const f = new FormData(modalForm);
     tg(`Здравствуйте! Хочу забронировать тур: ${f.get('country')}, даты ${fmt(f.get('from'))}–${fmt(f.get('to'))}, ${f.get('tourists')}. Имя: ${f.get('name')}, телефон: ${f.get('phone')}.`);
     modal.close();
