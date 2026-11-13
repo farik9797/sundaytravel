@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;600;700&display=swap">
 <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
-<link rel="preload" as="image" href="img/flow/st-phuquoc.webp">
+<link rel="preload" as="image" href="video/hero-poster.jpg" fetchpriority="high">
 <link rel="stylesheet" href="styles.css">
 <script>document.documentElement.classList.add('js')</script>
 </head>
@@ -60,13 +60,17 @@
         </div>
       </div>
       <figure class="hero__media" style="margin-inline: 0">
-        <img src="img/flow/st-phuquoc.webp" width="1376" height="768" alt="Пляж с белым песком и пальмами на острове Фукуок" fetchpriority="high">
+        <video class="hero__video" muted loop playsinline preload="metadata" poster="video/hero-poster.jpg" width="1280" height="720" aria-hidden="true">
+          <source src="video/hero-loop.webm" type="video/webm">
+          <source src="video/hero-loop.mp4" type="video/mp4">
+        </video>
+        <button class="hero__toggle" type="button" aria-label="Включить видео" hidden><i class="ph ph-play" aria-hidden="true"></i></button>
         <figcaption class="offer">
-          <h2>Фукуок, Вьетнам</h2>
-          <p class="offer__when">Вылет 13 ноября в 01:40, Qanot Sharq</p>
-          <p class="offer__price"><span>от</span><strong>$390</strong></p>
-          <p class="offer__terms">За взрослого в двухместном номере: перелёт, отель, завтраки, трансфер.</p>
-          <p class="offer__foot"><a class="link" href="https://t.me/Sundaytravel/1303">Все 14 отелей в посте канала<i class="ph ph-arrow-up-right" aria-hidden="true"></i></a></p>
+          <h2>Абу-Даби и Дубай, ОАЭ</h2>
+          <p class="offer__when">Вылет 15 ноября на 7 ночей, прямой рейс flydubai</p>
+          <p class="offer__price"><span>от</span><strong>$790</strong></p>
+          <p class="offer__terms">За человека в двухместном номере: 4 ночи в Абу-Даби, 3 в Дубае, завтраки, трансфер. Две экскурсии в подарок.</p>
+          <p class="offer__foot"><a class="link" href="https://t.me/Sundaytravel/1292">Все 6 вариантов отелей в посте канала<i class="ph ph-arrow-up-right" aria-hidden="true"></i></a></p>
         </figcaption>
       </figure>
     </div>
@@ -254,6 +258,19 @@
     if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
   }), { rootMargin: '0px 0px -10% 0px' });
   document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+  // hero-видео: без автозапуска при «уменьшении движения», видимая кнопка паузы (цикл длиннее 5 с)
+  const video = document.querySelector('.hero__video');
+  const toggle = document.querySelector('.hero__toggle');
+  const setState = (playing) => {
+    toggle.setAttribute('aria-label', playing ? 'Остановить видео' : 'Включить видео');
+    toggle.querySelector('i').className = 'ph ' + (playing ? 'ph-pause' : 'ph-play');
+  };
+  toggle.hidden = false;
+  toggle.addEventListener('click', () => (video.paused ? video.play() : video.pause()));
+  video.addEventListener('play', () => setState(true));
+  video.addEventListener('pause', () => setState(false));
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) video.play().catch(() => setState(false));
 })();
 </script>
 </body>

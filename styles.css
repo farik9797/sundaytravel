@@ -119,7 +119,11 @@ p { text-wrap: pretty; }
 .hero__lead { font-size: var(--t-lead); color: var(--text-2); max-width: 30ch; }
 .hero__ctas { display: flex; flex-wrap: wrap; gap: 12px; }
 .hero__media { position: relative; margin-top: clamp(28px, 4vh, 48px); height: clamp(340px, 52vh, 560px); border-radius: var(--r-tile); overflow: hidden; background: var(--bg-tile); }
-.hero__media > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 60%; }
+.hero__media > img, .hero__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 60%; }
+.hero__video { object-position: 36% 50%; }
+.hero__toggle { position: absolute; top: clamp(14px, 2vw, 28px); right: clamp(14px, 2vw, 28px); display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 1px solid var(--glass-line); border-radius: 50%; background: var(--glass-strong); -webkit-backdrop-filter: saturate(160%) blur(22px); backdrop-filter: saturate(160%) blur(22px); color: var(--text); font-size: 1.25rem; cursor: pointer; transition: background-color 0.2s var(--ease); }
+.hero__toggle:hover { background: var(--bg-raised); }
+.hero__toggle[hidden] { display: none; }
 .offer { position: absolute; left: clamp(14px, 2vw, 28px); bottom: clamp(14px, 2vw, 28px); width: min(380px, calc(100% - 28px)); padding: 22px 24px; border-radius: 20px; background: var(--glass-strong); -webkit-backdrop-filter: saturate(160%) blur(22px); backdrop-filter: saturate(160%) blur(22px); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), var(--shadow); border: 1px solid var(--glass-line); }
 .offer h2 { font-size: 1.5rem; letter-spacing: -0.02em; }
 .offer__when { margin-top: 4px; font-size: var(--t-small); color: var(--text-2); }
@@ -260,5 +264,5 @@ p { text-wrap: pretty; }
 }
 @media (prefers-reduced-transparency: reduce) {
   .nav, .dock { background: var(--bg); -webkit-backdrop-filter: none; backdrop-filter: none; }
-  .offer, .menu ul { background: var(--bg-raised); -webkit-backdrop-filter: none; backdrop-filter: none; }
+  .offer, .menu ul, .hero__toggle { background: var(--bg-raised); -webkit-backdrop-filter: none; backdrop-filter: none; }
 }
