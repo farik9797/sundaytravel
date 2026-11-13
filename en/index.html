@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
 <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
 <link rel="preload" as="image" href="../video/hero-poster.jpg?v=43f5275a" fetchpriority="high">
-<link rel="stylesheet" href="../styles.css?v=e6da1e3b">
+<link rel="stylesheet" href="../styles.css?v=0a4f213d">
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
@@ -584,7 +584,7 @@
   const video = document.querySelector('.hero__video');
   const conn = navigator.connection;
   const lowData = conn && (conn.saveData || /(^|-)2g$/.test(conn.effectiveType || ''));
-  if (!reduce && !lowData) video.play().catch(() => {});
+  if (video && !reduce && !lowData) video.play().catch(() => {});
 
   // шапка прилипает после начала прокрутки, чтобы «Забронировать» и языки были под рукой
   const nav = document.querySelector('.nav');
@@ -628,14 +628,14 @@
     el.addEventListener(el.tagName === 'SELECT' ? 'change' : 'input', () => clearHint(el));
   });
   const book = document.getElementById('podbor');
-  book.addEventListener('submit', (e) => {
+  book?.addEventListener('submit', (e) => {
     e.preventDefault();
     if (!valid(book)) return;
     const f = new FormData(book);
     tg(`Hello! Please find me a tour: ${f.get('country')}, dates ${fmt(f.get('from'))}–${fmt(f.get('to'))}, ${f.get('tourists')}.`);
   });
   const call = document.getElementById('zvonok');
-  call.addEventListener('submit', (e) => {
+  call?.addEventListener('submit', (e) => {
     e.preventDefault();
     if (!valid(call)) return;
     const f = new FormData(call);
@@ -643,7 +643,7 @@
   });
 
   // карточки направлений подставляют страну в форму подбора
-  document.querySelectorAll('[data-country]').forEach((a) => a.addEventListener('click', (e) => {
+  if (book) document.querySelectorAll('[data-country]').forEach((a) => a.addEventListener('click', (e) => {
     e.preventDefault();
     book.country.value = a.dataset.country;
     clearHint(book.country);
@@ -814,6 +814,7 @@
   // слайдер горящих туров: кнопки листают на ширину видимой части
   const tours = document.getElementById('tours');
   const slideBtns = document.querySelectorAll('[data-slide]');
+  if (tours) {
   const syncTours = () => {
     const max = tours.scrollWidth - tours.clientWidth - 2;
     slideBtns[0].disabled = tours.scrollLeft <= 2;
@@ -832,6 +833,7 @@
   tours.addEventListener('scroll', syncTours, { passive: true });
   addEventListener('resize', syncTours);
   syncTours();
+  }
 
   const row = document.querySelector('.reviews__row');
   document.querySelectorAll('.reviews__nav').forEach((b) => b.addEventListener('click', () => {

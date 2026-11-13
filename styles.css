@@ -383,9 +383,14 @@ html:has(.modal[open]) { overflow: hidden; }
   .hero { flex-direction: column; align-items: stretch; padding: 92px 0 32px; background: var(--bg); }
   .hero::before { display: none; }
   .hero__in { display: contents; }
-  .hero__text { order: 1; padding: 8px var(--pad) 0; }
-  .hero__video { order: 2; position: relative; inset: auto; z-index: 0; width: 100%; height: auto; aspect-ratio: 16 / 9; margin-top: 28px; object-fit: cover; -webkit-mask-image: none; mask-image: none; }
-  .book { order: 4; flex: none; margin: 16px var(--pad) 0; }
+  /* порядок: заголовок, подзаголовок, видео с кнопкой в левом нижнем углу, под видео рукописная фраза, форма */
+  .hero__text, .hero__row { display: contents; }
+  .hero h1 { order: 1; margin-top: 8px; padding-inline: var(--pad); }
+  .hero__lead { order: 2; padding-inline: var(--pad); }
+  .hero__video { order: 3; position: relative; inset: auto; z-index: 0; width: 100%; height: auto; aspect-ratio: 16 / 9; margin-top: 24px; object-fit: cover; -webkit-mask-image: none; mask-image: none; }
+  .hero__row .btn { order: 4; position: relative; z-index: 1; align-self: flex-start; margin: -72px 0 0 var(--pad); box-shadow: 0 10px 24px -8px rgba(0, 0, 0, 0.45); }
+  .hero__script { order: 5; align-self: flex-start; margin: 34px 0 6px calc(var(--pad) + 12px); }
+  .book { order: 6; flex: none; margin: 16px var(--pad) 0; }
   .strip { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 0; }
   .strip__item:nth-child(3) { border-left: 0; }
   .why__list { width: 100%; }
@@ -410,8 +415,6 @@ html:has(.modal[open]) { overflow: hidden; }
   .nav.is-stuck .nav__in { height: 60px; }
   .nav.is-stuck .nav__logo img { height: 40px; }
   .hero h1 { font-size: clamp(2.1rem, 9vw, 2.6rem); }
-  .hero__row { flex-direction: column; align-items: flex-start; gap: 22px; }
-  .hero__script { margin-left: 12px; }
   .strip { grid-template-columns: minmax(0, 1fr); }
   .strip__item + .strip__item { border-left: 0; border-top: 1px solid var(--line); padding-top: 14px; }
   .sec__head { flex-wrap: wrap; }
