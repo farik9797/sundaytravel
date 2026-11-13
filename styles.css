@@ -95,7 +95,7 @@ h1, h2, h3 { font-weight: 800; letter-spacing: -0.025em; line-height: 1.08; text
   linear-gradient(90deg, rgba(255, 253, 248, 0.97) 0%, rgba(255, 253, 248, 0.9) 24%, rgba(255, 253, 248, 0.55) 38%, rgba(255, 253, 248, 0) 52%),
   linear-gradient(180deg, rgba(255, 253, 248, 0.75) 0%, rgba(255, 253, 248, 0) 22%); }
 .hero__in { display: flex; justify-content: space-between; align-items: flex-start; gap: 32px; }
-.hero__text { padding-top: 26px; max-width: 640px; }
+.hero__text { padding-top: 26px; max-width: 760px; }
 .hero h1 { font-size: clamp(2.5rem, 4.2vw + 0.4rem, 4.5rem); line-height: 1.02; }
 .hero__brand { background: var(--brand-grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .hero__lead { margin-top: 18px; font-size: clamp(1.0625rem, 0.5vw + 0.95rem, 1.25rem); font-weight: 500; color: #2a2a2a; }
