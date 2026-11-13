@@ -221,11 +221,9 @@ h1, h2, h3 { font-weight: 800; letter-spacing: -0.025em; line-height: 1.08; text
 /* баннеры «Готовы к путешествию?» */
 .cta { position: relative; display: flex; align-items: center; gap: clamp(20px, 3vw, 48px); min-height: 124px; margin-top: clamp(28px, 2.8vw, 40px); padding: 22px clamp(24px, 3vw, 44px) 22px clamp(90px, 9vw, 130px); border-radius: var(--r); overflow: hidden; isolation: isolate;
   background: linear-gradient(90deg, #ffe7a3 0%, #ffd056 30%, #ffc23a 46%, rgba(255, 190, 50, 0) 64%), url("img/v3/cta-sunset.webp") right 22% / 60% auto no-repeat, #f6a21a; box-shadow: var(--shadow-soft); }
-.cta--wide { border-radius: 0; margin-top: clamp(56px, 6vw, 96px); overflow: visible; padding-left: max(clamp(90px, 9vw, 130px), calc((100% - var(--wrap)) / 2 + 90px)); min-height: 140px; }
-.cta--wide { background-size: auto, 74% auto; }
+.cta--wide { border-radius: 0; margin-top: clamp(56px, 6vw, 96px); overflow: visible; padding-left: max(var(--pad), calc((100% - var(--wrap)) / 2)); min-height: 140px; }
 .cta--mascot { margin-top: clamp(64px, 7vw, 110px); overflow: visible; }
 .cta__mascot { position: absolute; z-index: 1; right: clamp(16px, 6%, 90px); bottom: 0; height: 178%; width: auto; pointer-events: none; filter: drop-shadow(0 16px 22px rgba(120, 72, 0, 0.18)); }
-.cta__peek { position: absolute; z-index: 1; right: max(var(--pad), calc((100% - var(--wrap)) / 2 + var(--pad))); bottom: 0; height: 150%; width: auto; pointer-events: none; filter: drop-shadow(0 16px 22px rgba(120, 72, 0, 0.18)); }
 .cta__plane { position: absolute; left: clamp(20px, 2.4vw, 40px); top: 50%; transform: translateY(-50%); display: grid; place-items: center; width: clamp(54px, 2vw + 30px, 66px); aspect-ratio: 1; border-radius: 50%; background: #fff; color: var(--orange-ink); font-size: clamp(1.7rem, 0.8vw + 1.2rem, 2.1rem); box-shadow: 0 10px 24px -8px rgba(150, 82, 0, 0.35); }
 .cta h2 { font-size: clamp(1.5rem, 1.2vw + 1rem, 2.125rem); }
 .cta p { margin-top: 4px; font-size: clamp(0.9375rem, 0.3vw + 0.875rem, 1.0625rem); font-weight: 500; }
@@ -396,7 +394,6 @@ html:has(.modal[open]) { overflow: hidden; }
   .sec--mascot { padding-left: var(--pad); }
   .reviews__mascot { display: none; }
   .cta__mascot { right: 16px; height: 280px; }
-  .cta__peek { height: 220px; }
   /* баннер: фото полосой сверху, текст ниже на жёлтом, чтобы самолёт с фото не попадал под текст */
   .cta { --cta-strip: clamp(118px, 24vw, 190px); flex-direction: column; align-items: flex-start; gap: 16px; padding: calc(var(--cta-strip) + 6px) 24px 24px; background: linear-gradient(170deg, #ffe7a3 0%, #ffd056 55%, #ffc23a 100%); }
   .cta::before { content: ""; position: absolute; z-index: -1; inset: 0 0 auto; height: var(--cta-strip); border-radius: inherit; border-bottom-left-radius: 0; border-bottom-right-radius: 0; background: url("img/v3/cta-sunset.webp") 62% 30% / cover no-repeat; -webkit-mask-image: linear-gradient(180deg, #000 62%, transparent); mask-image: linear-gradient(180deg, #000 62%, transparent); }
@@ -439,7 +436,7 @@ html:has(.modal[open]) { overflow: hidden; }
   .consult__btn { width: 44px; height: 44px; font-size: 1.4rem; }
   .chat { right: 8px; left: 8px; bottom: 8px; width: auto; height: min(640px, calc(100dvh - 16px)); border-radius: 20px; }
   .chat-open .consult { display: none; }
-  .cta__mascot, .cta__peek { display: none; }
+  .cta__mascot { display: none; }
   .cta--mascot, .cta--wide { margin-top: clamp(28px, 2.8vw, 40px); }
 }
 
