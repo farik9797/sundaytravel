@@ -434,6 +434,32 @@
 (() => {
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // блоки плавно появляются при прокрутке; что видно при загрузке, не прячем; соседи в одной сетке идут лесенкой
+  const RV = '.strip__item, .sec__head, .why__intro, .why__panel, .tours:not(.tours--grid), .tours--grid > li, .dest, .gallery, .cta, .call, .office, .reviews__row, .faq__mascot, .qa, '
+    + '.phead__img, .filters, .tscroll, .note, .area, .sights > li, .split__main > *, .tbook, .prog, .day, .kv-card, .kv, .team > li, .rgrid > li, .leave, .clist, .map, '
+    + '.tstop, .pkg, .fun, .info, .tlead, .tcard';
+  const main = document.querySelector('main');
+  if (main && !reduce && 'IntersectionObserver' in window) {
+    const found = [...main.querySelectorAll(RV)];
+    const set = new Set(found);
+    const nested = (el) => { for (let p = el.parentElement; p && p !== main; p = p.parentElement) if (set.has(p)) return true; return false; };
+    const later = found.filter((el) => !nested(el) && el.getBoundingClientRect().top > innerHeight * 0.92);
+    later.forEach((el) => el.classList.add('rv'));
+    document.documentElement.classList.add('rv-on');
+    const io = new IntersectionObserver((entries) => {
+      entries.filter((e) => e.isIntersecting).map((e) => e.target)
+        .sort((x, y) => { const a = x.getBoundingClientRect(); const b = y.getBoundingClientRect(); return a.top - b.top || a.left - b.left; })
+        .forEach((el, i) => {
+          io.unobserve(el);
+          const d = Math.min(i, 5) * 80;
+          el.style.setProperty('--rv-d', d + 'ms');
+          el.classList.add('is-in');
+          setTimeout(() => { el.classList.remove('rv', 'is-in'); el.style.removeProperty('--rv-d'); }, 1100 + d);
+        });
+    }, { rootMargin: '0px 0px -6% 0px', threshold: 0.06 });
+    later.forEach((el) => io.observe(el));
+  }
+
   // hero-видео: без автозапуска при «уменьшении движения», тогда виден постер
   const video = document.querySelector('.hero__video');
   const conn = navigator.connection;

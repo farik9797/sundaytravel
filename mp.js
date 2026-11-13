@@ -1,5 +1,7 @@
 /* Многостраничный прототип: фильтр горящих туров и заявки с внутренних страниц */
 (() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   // фильтр ленты горящих туров: страна, месяц вылета, цена за человека
   const grid = document.getElementById('hot');
   if (grid) {
@@ -59,6 +61,36 @@
       : 'До вылета ' + days + ' ' + plural(days);
     el.hidden = false;
   });
+
+  // меню разделов тура: подсвечен раздел, который сейчас под меню; на телефоне пункт подкручивается в видимую часть
+  const tnav = document.querySelector('.tnav');
+  if (tnav) {
+    const list = tnav.querySelector('.tnav__links');
+    const links = [...list.querySelectorAll('a[href^="#"]')];
+    const pairs = links.map((a) => [a, document.querySelector(a.getAttribute('href'))]).filter(([, s]) => s);
+    let current = null;
+    const setActive = (a) => {
+      if (a === current) return;
+      current?.classList.remove('is-active');
+      current?.removeAttribute('aria-current');
+      current = a;
+      if (!a) return;
+      a.classList.add('is-active');
+      a.setAttribute('aria-current', 'location');
+      const left = a.offsetLeft - (list.clientWidth - a.offsetWidth) / 2;
+      list.scrollTo({ left: Math.max(0, left), behavior: reduce ? 'auto' : 'smooth' });
+    };
+    let ticking = false;
+    const spy = () => {
+      ticking = false;
+      const line = tnav.getBoundingClientRect().bottom + 24;
+      const hit = pairs.find(([, s]) => { const r = s.getBoundingClientRect(); return r.top <= line && r.bottom > line; });
+      setActive(hit ? hit[0] : null);
+    };
+    addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(spy); } }, { passive: true });
+    addEventListener('resize', spy);
+    spy();
+  }
 
   // нижняя панель «Забронировать» на телефоне: видна, когда на экране нет цены в шапке тура и формы заявки
   const tbar = document.querySelector('.tbar');
