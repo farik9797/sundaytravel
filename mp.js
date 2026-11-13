@@ -41,6 +41,37 @@
     });
   }
 
+  // страница тура: «Выбрать» подставляет пару отелей в форму заявки
+  const pkgSelect = document.querySelector('.tlead__form [name="pkg"]');
+  document.querySelectorAll('[data-pick]').forEach((a) => a.addEventListener('click', () => {
+    if (pkgSelect) pkgSelect.value = a.dataset.pick;
+  }));
+
+  // сколько дней до вылета: считаем по календарю посетителя, после вылета метка не показывается
+  const plural = (n) => (n % 10 === 1 && n % 100 !== 11 ? 'день'
+    : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 'дня' : 'дней');
+  document.querySelectorAll('[data-depart]').forEach((el) => {
+    const [y, m, d] = el.dataset.depart.split('-').map(Number);
+    const now = new Date();
+    const days = Math.round((new Date(y, m - 1, d) - new Date(now.getFullYear(), now.getMonth(), now.getDate())) / 864e5);
+    if (days < 0) return;
+    el.textContent = days === 0 ? 'Вылет сегодня'
+      : 'До вылета ' + days + ' ' + plural(days);
+    el.hidden = false;
+  });
+
+  // нижняя панель «Забронировать» на телефоне: видна, когда на экране нет цены в шапке тура и формы заявки
+  const tbar = document.querySelector('.tbar');
+  const watch = [...document.querySelectorAll('.thero__buy, #zayavka')];
+  if (tbar && watch.length && 'IntersectionObserver' in window) {
+    const seen = new Set();
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => (en.isIntersecting ? seen.add(en.target) : seen.delete(en.target)));
+      tbar.classList.toggle('is-on', seen.size === 0);
+    });
+    watch.forEach((el) => io.observe(el));
+  }
+
   // формы с data-tg: заявка уходит менеджеру в Telegram готовым текстом
   const fmt = (v) => (/^\d{4}-\d{2}-\d{2}$/.test(v) ? v.split('-').reverse().join('.') : v);
   document.querySelectorAll('form[data-tg]').forEach((form) => form.addEventListener('submit', (e) => {
@@ -62,9 +93,13 @@
       bad[0].focus();
       return;
     }
-    const f = new FormData(form);
+    const val = (k) => {
+      const el = form.elements[k];
+      if (!el) return '';
+      return el.matches('select[data-label]') ? el.selectedOptions[0].textContent : el.value;
+    };
     const text = form.dataset.tg
-      .replace(/\{(\w+)\}/g, (_, k) => fmt(String(f.get(k) || '').trim()) || '—')
+      .replace(/\{(\w+)\}/g, (_, k) => fmt(String(val(k)).trim()) || '—')
       .replace(/, обратно —/, '');
     window.open('https://t.me/Sundaytraveluz?text=' + encodeURIComponent(text), '_blank', 'noopener');
   }));
