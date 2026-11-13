@@ -142,7 +142,15 @@ h1, h2, h3 { font-weight: 800; letter-spacing: -0.025em; line-height: 1.08; text
 .sec__more:hover { text-decoration: underline; text-underline-offset: 0.2em; }
 
 /* горящие туры */
-.tours { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(14px, 1.6vw, 24px); }
+.tours { --gap: clamp(14px, 1.6vw, 24px); display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - 3 * var(--gap)) / 4); gap: var(--gap); margin: -8px -6px -18px; padding: 8px 6px 22px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scroll-padding-inline: 6px; scrollbar-width: none; }
+.tours::-webkit-scrollbar { display: none; }
+.tour { scroll-snap-align: start; }
+.slider-ctrl { margin-left: auto; display: flex; gap: 10px; }
+.slider-ctrl button { display: grid; place-items: center; width: 42px; height: 42px; padding: 0; border: 0; border-radius: 50%; background: #fff; color: var(--text); font-size: 1.05rem; cursor: pointer; box-shadow: var(--shadow-soft); transition: background 0.2s var(--ease), opacity 0.2s var(--ease); }
+.slider-ctrl button:hover:not(:disabled) { background: var(--cream-2); }
+.slider-ctrl button:disabled { opacity: 0.4; cursor: default; }
+.slider-ctrl + .sec__more { margin-left: 18px; }
+.badge--soft { background: var(--yellow); color: var(--dark); box-shadow: 0 6px 14px -6px rgba(250, 165, 0, 0.8); }
 .tour { position: relative; display: flex; flex-direction: column; background: var(--card); border-radius: var(--r); box-shadow: var(--shadow); overflow: hidden; transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease); }
 .tour:hover { transform: translateY(-4px); box-shadow: 0 18px 38px -16px rgba(120, 72, 0, 0.35); }
 .tour__img { position: relative; aspect-ratio: 16 / 8.8; }
@@ -269,7 +277,7 @@ h1, h2, h3 { font-weight: 800; letter-spacing: -0.025em; line-height: 1.08; text
 @media (max-width: 1180px) {
   .nav__links, .nav__city { display: none; }
   .menu { display: block; }
-  .tours { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tours { grid-auto-columns: calc((100% - var(--gap)) / 2); }
   .why { grid-template-columns: minmax(0, 1fr); }
   .why__intro .btn { margin-top: 24px; }
   .dest, .gallery { grid-auto-flow: column; grid-template-columns: none; grid-auto-columns: 30%; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding-bottom: 8px; }
@@ -311,8 +319,8 @@ h1, h2, h3 { font-weight: 800; letter-spacing: -0.025em; line-height: 1.08; text
   .sec__head { flex-wrap: wrap; }
   .sec__head > div { flex: 1 1 0; min-width: 0; }
   .sec__more { margin-left: 0; width: 100%; padding-left: calc(clamp(2.2rem, 2vw + 1rem, 2.9rem) + 16px); }
-  .tours { grid-auto-flow: column; grid-template-columns: none; grid-auto-columns: 82%; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding: 4px 2px 18px; }
-  .tour { scroll-snap-align: start; }
+  .tours { grid-auto-columns: 82%; }
+  .slider-ctrl { display: none; }
   .why__list { grid-template-columns: minmax(0, 1fr); }
   .dest, .gallery { grid-auto-columns: 62%; }
   .call { flex-direction: column; min-height: 0; }

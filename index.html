@@ -131,9 +131,10 @@
     <div class="sec__head">
       <i class="sec__ico sec__ico--fire ph-fill ph-fire" aria-hidden="true"></i>
       <div><h2 id="goryashchie-t">Горящие туры</h2><p>Лучшие предложения прямо сейчас</p></div>
+      <div class="slider-ctrl"><button type="button" data-slide="-1" aria-label="Предыдущие туры" aria-controls="tours"><i class="ph-bold ph-arrow-left" aria-hidden="true"></i></button><button type="button" data-slide="1" aria-label="Следующие туры" aria-controls="tours"><i class="ph-bold ph-arrow-right" aria-hidden="true"></i></button></div>
       <a class="sec__more" href="https://t.me/Sundaytravel">Все горящие туры<i class="ph-bold ph-arrow-right" aria-hidden="true"></i></a>
     </div>
-    <ul class="tours" role="list">
+    <ul class="tours" id="tours" role="list">
       <li class="tour">
         <div class="tour__img"><img src="img/flow/st-sharm.webp" width="1376" height="768" alt="Коралловый риф у берега Красного моря в Шарм-эль-Шейхе" loading="lazy"><span class="badge">Горящий</span><button class="heart" type="button" aria-pressed="false" aria-label="В избранное"><i class="ph ph-heart" aria-hidden="true"></i></button></div>
         <div class="tour__body">
@@ -172,6 +173,66 @@
           <p><i class="ph ph-calendar-blank" aria-hidden="true"></i>13–20 ноя</p>
           <p class="tour__price">от <strong>$687</strong></p>
           <a class="go" href="https://t.me/Sundaytravel/1301" aria-label="Мальдивы: подробности в посте канала"><i class="ph-bold ph-arrow-right" aria-hidden="true"></i></a>
+        </div>
+      </li>
+      <li class="tour">
+        <div class="tour__img"><img src="img/v3/dubai-water.jpg" width="1280" height="720" alt="Небоскрёбы Дубая с воды, пальма на переднем плане" loading="lazy"><span class="badge">Горящий</span><button class="heart" type="button" aria-pressed="false" aria-label="В избранное"><i class="ph ph-heart" aria-hidden="true"></i></button></div>
+        <div class="tour__body">
+          <h3>ОАЭ</h3>
+          <p><i class="ph-fill ph-airplane-takeoff" aria-hidden="true"></i>из Ташкента</p>
+          <p><i class="ph ph-calendar-blank" aria-hidden="true"></i>15–22 ноя, Абу-Даби + Дубай</p>
+          <p class="tour__price">от <strong>$790</strong></p>
+          <a class="go" href="https://t.me/Sundaytravel/1292" aria-label="ОАЭ: все отели в посте канала"><i class="ph-bold ph-arrow-right" aria-hidden="true"></i></a>
+        </div>
+      </li>
+      <li class="tour">
+        <div class="tour__img"><img src="img/v3/langkawi.webp" width="1376" height="768" alt="Пляж Лангкави в Малайзии" loading="lazy"><span class="badge">Горящий</span><button class="heart" type="button" aria-pressed="false" aria-label="В избранное"><i class="ph ph-heart" aria-hidden="true"></i></button></div>
+        <div class="tour__body">
+          <h3>Малайзия</h3>
+          <p><i class="ph-fill ph-airplane-takeoff" aria-hidden="true"></i>из Ташкента</p>
+          <p><i class="ph ph-calendar-blank" aria-hidden="true"></i>5–12 дек, Лангкави</p>
+          <p class="tour__price">от <strong>$737</strong></p>
+          <a class="go" href="https://t.me/Sundaytravel/1300" aria-label="Малайзия, Лангкави: подробности в посте канала"><i class="ph-bold ph-arrow-right" aria-hidden="true"></i></a>
+        </div>
+      </li>
+      <li class="tour">
+        <div class="tour__img"><img src="img/v3/kualalumpur.webp" width="1376" height="768" alt="Башни Петронас в Куала-Лумпуре" loading="lazy"><span class="badge badge--soft">Комби-тур</span><button class="heart" type="button" aria-pressed="false" aria-label="В избранное"><i class="ph ph-heart" aria-hidden="true"></i></button></div>
+        <div class="tour__body">
+          <h3>Малайзия</h3>
+          <p><i class="ph-fill ph-airplane-takeoff" aria-hidden="true"></i>из Ташкента</p>
+          <p><i class="ph ph-calendar-blank" aria-hidden="true"></i>27 ноя – 4 дек, Куала-Лумпур + Лангкави</p>
+          <p class="tour__price">от <strong>$928</strong></p>
+          <a class="go" href="https://t.me/Sundaytravel/1299" aria-label="Малайзия, комби-тур: все отели в посте канала"><i class="ph-bold ph-arrow-right" aria-hidden="true"></i></a>
+        </div>
+      </li>
+      <li class="tour">
+        <div class="tour__img"><img src="img/v3/istanbul.webp" width="1376" height="768" alt="Голубая мечеть в Стамбуле" loading="lazy"><span class="badge badge--soft">Новый год</span><button class="heart" type="button" aria-pressed="false" aria-label="В избранное"><i class="ph ph-heart" aria-hidden="true"></i></button></div>
+        <div class="tour__body">
+          <h3>Турция</h3>
+          <p><i class="ph-fill ph-map-pin" aria-hidden="true"></i>Стамбул</p>
+          <p><i class="ph ph-calendar-blank" aria-hidden="true"></i>Новый год 2027</p>
+          <p class="tour__price">от <strong>$568</strong></p>
+          <a class="go" href="https://t.me/Sundaytravel/1284" aria-label="Турция, Стамбул: подробности в посте канала"><i class="ph-bold ph-arrow-right" aria-hidden="true"></i></a>
+        </div>
+      </li>
+      <li class="tour">
+        <div class="tour__img"><img src="img/kemer.jpg" width="1200" height="800" alt="Побережье Кемера в Анталье" loading="lazy"><span class="badge badge--soft">Новый год</span><button class="heart" type="button" aria-pressed="false" aria-label="В избранное"><i class="ph ph-heart" aria-hidden="true"></i></button></div>
+        <div class="tour__body">
+          <h3>Турция</h3>
+          <p><i class="ph-fill ph-map-pin" aria-hidden="true"></i>Анталья</p>
+          <p><i class="ph ph-calendar-blank" aria-hidden="true"></i>Новый год 2027</p>
+          <p class="tour__price">от <strong>$906</strong></p>
+          <a class="go" href="https://t.me/Sundaytravel/1284" aria-label="Турция, Анталья: подробности в посте канала"><i class="ph-bold ph-arrow-right" aria-hidden="true"></i></a>
+        </div>
+      </li>
+      <li class="tour">
+        <div class="tour__img"><img src="img/v3/thailand.webp" width="1376" height="768" alt="Лодка у берега с известняковыми скалами в Таиланде" loading="lazy"><span class="badge badge--soft">Виза в подарок</span><button class="heart" type="button" aria-pressed="false" aria-label="В избранное"><i class="ph ph-heart" aria-hidden="true"></i></button></div>
+        <div class="tour__body">
+          <h3>Таиланд</h3>
+          <p><i class="ph-fill ph-map-pin" aria-hidden="true"></i>Бангкок или Паттайя</p>
+          <p><i class="ph ph-calendar-blank" aria-hidden="true"></i>заезды до 17 дек</p>
+          <p class="tour__price"><strong>цена по запросу</strong></p>
+          <a class="go" href="https://t.me/Sundaytravel/1297" aria-label="Таиланд: условия акции в посте канала"><i class="ph-bold ph-arrow-right" aria-hidden="true"></i></a>
         </div>
       </li>
     </ul>
@@ -227,7 +288,7 @@
     </div>
     <ul class="gallery" role="list">
       <li><figure class="tile"><img src="img/kemer.jpg" width="1200" height="800" alt="Побережье Кемера в Турции" loading="lazy"><figcaption>Турция</figcaption></figure><button class="heart" type="button" aria-pressed="false" aria-label="В избранное"><i class="ph ph-heart" aria-hidden="true"></i></button></li>
-      <li><figure class="tile"><img src="video/hero-poster.jpg" width="1280" height="720" alt="Дубай с воды, пальма на переднем плане" loading="lazy"><figcaption>ОАЭ</figcaption></figure><button class="heart" type="button" aria-pressed="false" aria-label="В избранное"><i class="ph ph-heart" aria-hidden="true"></i></button></li>
+      <li><figure class="tile"><img src="img/v3/dubai-water.jpg" width="1280" height="720" alt="Дубай с воды, пальма на переднем плане" loading="lazy"><figcaption>ОАЭ</figcaption></figure><button class="heart" type="button" aria-pressed="false" aria-label="В избранное"><i class="ph ph-heart" aria-hidden="true"></i></button></li>
       <li><figure class="tile"><img src="img/batumi.jpg" width="1200" height="800" alt="Набережная Батуми в Грузии" loading="lazy"><figcaption>Грузия</figcaption></figure><button class="heart" type="button" aria-pressed="false" aria-label="В избранное"><i class="ph ph-heart" aria-hidden="true"></i></button></li>
       <li><figure class="tile"><img src="img/flow/st-window.webp" width="1376" height="768" alt="Крыло самолёта над облаками на рассвете" loading="lazy"><figcaption>В полёте</figcaption></figure><button class="heart" type="button" aria-pressed="false" aria-label="В избранное"><i class="ph ph-heart" aria-hidden="true"></i></button></li>
       <li><figure class="tile"><img src="img/flow/st-phuquoc.webp" width="1376" height="768" alt="Пляж Фукуока во Вьетнаме" loading="lazy"><figcaption>Вьетнам</figcaption></figure><button class="heart" type="button" aria-pressed="false" aria-label="В избранное"><i class="ph ph-heart" aria-hidden="true"></i></button></li>
@@ -402,6 +463,28 @@
     b.setAttribute('aria-pressed', on);
     b.querySelector('i').className = (on ? 'ph-fill' : 'ph') + ' ph-heart';
   }));
+
+  // слайдер горящих туров: кнопки листают на ширину видимой части
+  const tours = document.getElementById('tours');
+  const slideBtns = document.querySelectorAll('[data-slide]');
+  const syncTours = () => {
+    const max = tours.scrollWidth - tours.clientWidth - 2;
+    slideBtns[0].disabled = tours.scrollLeft <= 2;
+    slideBtns[1].disabled = tours.scrollLeft >= max;
+  };
+  slideBtns.forEach((b) => b.addEventListener('click', () => {
+    const cards = [...tours.children];
+    const box = tours.getBoundingClientRect();
+    const pad = parseFloat(getComputedStyle(tours).paddingLeft);
+    const perView = Math.max(1, Math.round(tours.clientWidth / cards[0].getBoundingClientRect().width));
+    const cur = Math.max(0, cards.findIndex((c) => c.getBoundingClientRect().left >= box.left + pad - 4));
+    const next = Math.min(Math.max(cur + perView * Number(b.dataset.slide), 0), cards.length - perView);
+    const left = tours.scrollLeft + cards[next].getBoundingClientRect().left - box.left - pad;
+    tours.scrollTo({ left, behavior: reduce ? 'auto' : 'smooth' });
+  }));
+  tours.addEventListener('scroll', syncTours, { passive: true });
+  addEventListener('resize', syncTours);
+  syncTours();
 
   const row = document.querySelector('.reviews__row');
   document.querySelectorAll('.reviews__nav').forEach((b) => b.addEventListener('click', () => {
