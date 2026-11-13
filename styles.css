@@ -383,13 +383,14 @@ html:has(.modal[open]) { overflow: hidden; }
   .hero { flex-direction: column; align-items: stretch; padding: 92px 0 32px; background: var(--bg); }
   .hero::before { display: none; }
   .hero__in { display: contents; }
-  /* порядок: заголовок, подзаголовок, видео с кнопкой в левом нижнем углу, под видео рукописная фраза, форма */
+  /* порядок: заголовок, подзаголовок, видео с рукописной фразой в левом нижнем углу, под видео кнопка на всю ширину, форма */
   .hero__text, .hero__row { display: contents; }
   .hero h1 { order: 1; margin-top: 8px; padding-inline: var(--pad); }
   .hero__lead { order: 2; padding-inline: var(--pad); }
   .hero__video { order: 3; position: relative; inset: auto; z-index: 0; width: 100%; height: auto; aspect-ratio: 16 / 9; margin-top: 24px; object-fit: cover; -webkit-mask-image: none; mask-image: none; }
-  .hero__row .btn { order: 4; position: relative; z-index: 1; align-self: flex-start; margin: -72px 0 0 var(--pad); box-shadow: 0 10px 24px -8px rgba(0, 0, 0, 0.45); }
-  .hero__script { order: 5; align-self: flex-start; margin: 34px 0 6px calc(var(--pad) + 12px); }
+  /* фраза занимает 80 px внутри видео: начинается на 100 px выше его нижнего края, кнопка встаёт на 24 px ниже видео */
+  .hero__script { order: 4; position: relative; z-index: 1; align-self: flex-start; height: 80px; margin: -100px 0 44px calc(var(--pad) + 8px); color: #fff; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.35), 0 4px 18px rgba(0, 0, 0, 0.5); }
+  .hero__row .btn { order: 5; align-self: stretch; margin: 0 var(--pad); }
   .book { order: 6; flex: none; margin: 16px var(--pad) 0; }
   .strip { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 0; }
   .strip__item:nth-child(3) { border-left: 0; }
