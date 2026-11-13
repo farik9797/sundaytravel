@@ -83,8 +83,6 @@ h1, h2, h3 { font-weight: 800; letter-spacing: -0.025em; line-height: 1.08; text
 .nav__drop > ul a { display: block; padding: 9px 12px; border-radius: 10px; }
 .nav__drop > ul a:hover { background: var(--cream); color: var(--text); }
 .nav__end { margin-left: auto; display: flex; align-items: center; gap: clamp(10px, 1.4vw, 20px); }
-.nav__city { display: inline-flex; align-items: center; gap: 6px; font-size: 0.9375rem; font-weight: 600; text-decoration: none; }
-.nav__city i { color: var(--orange-ink); font-size: 1.15rem; }
 .nav__soc { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 10px; text-decoration: none; transition: background 0.2s var(--ease), transform 0.2s var(--ease); }
 .nav__soc img { width: 26px; height: 26px; }
 .nav__soc:hover { background: rgba(255, 255, 255, 0.7); transform: translateY(-1px); }
@@ -222,12 +220,13 @@ h1, h2, h3 { font-weight: 800; letter-spacing: -0.025em; line-height: 1.08; text
 
 /* баннеры «Готовы к путешествию?» */
 .cta { position: relative; display: flex; align-items: center; gap: clamp(20px, 3vw, 48px); min-height: 124px; margin-top: clamp(28px, 2.8vw, 40px); padding: 22px clamp(24px, 3vw, 44px) 22px clamp(90px, 9vw, 130px); border-radius: var(--r); overflow: hidden; isolation: isolate;
-  background: linear-gradient(90deg, #ffe7a3 0%, #ffd056 30%, #ffc23a 52%, rgba(255, 186, 40, 0) 72%), url("img/v3/sunset.webp") right 30% / auto 260% no-repeat, #f6a21a; box-shadow: var(--shadow-soft); }
+  background: linear-gradient(90deg, #ffe7a3 0%, #ffd056 30%, #ffc23a 46%, rgba(255, 190, 50, 0) 64%), url("img/v3/cta-sunset.webp") right 22% / 60% auto no-repeat, #f6a21a; box-shadow: var(--shadow-soft); }
 .cta--wide { border-radius: 0; margin-top: clamp(56px, 6vw, 96px); overflow: visible; padding-left: max(clamp(90px, 9vw, 130px), calc((100% - var(--wrap)) / 2 + 90px)); min-height: 140px; }
+.cta--wide { background-size: auto, 74% auto; }
 .cta--mascot { margin-top: clamp(64px, 7vw, 110px); overflow: visible; }
 .cta__mascot { position: absolute; z-index: 1; right: clamp(16px, 6%, 90px); bottom: 0; height: 178%; width: auto; pointer-events: none; filter: drop-shadow(0 16px 22px rgba(120, 72, 0, 0.18)); }
 .cta__peek { position: absolute; z-index: 1; right: max(var(--pad), calc((100% - var(--wrap)) / 2 + var(--pad))); bottom: 0; height: 150%; width: auto; pointer-events: none; filter: drop-shadow(0 16px 22px rgba(120, 72, 0, 0.18)); }
-.cta__plane { position: absolute; left: clamp(20px, 2.4vw, 40px); top: 50%; transform: translateY(-50%) rotate(-10deg); font-size: clamp(3.2rem, 3vw + 1.5rem, 4.6rem); color: rgba(255, 255, 255, 0.75); }
+.cta__plane { position: absolute; left: clamp(20px, 2.4vw, 40px); top: 50%; transform: translateY(-50%); display: grid; place-items: center; width: clamp(54px, 2vw + 30px, 66px); aspect-ratio: 1; border-radius: 50%; background: #fff; color: var(--orange-ink); font-size: clamp(1.7rem, 0.8vw + 1.2rem, 2.1rem); box-shadow: 0 10px 24px -8px rgba(150, 82, 0, 0.35); }
 .cta h2 { font-size: clamp(1.5rem, 1.2vw + 1rem, 2.125rem); }
 .cta p { margin-top: 4px; font-size: clamp(0.9375rem, 0.3vw + 0.875rem, 1.0625rem); font-weight: 500; }
 
@@ -312,6 +311,41 @@ h1, h2, h3 { font-weight: 800; letter-spacing: -0.025em; line-height: 1.08; text
 .consult__text i { color: var(--orange); }
 .consult__btn { display: grid; place-items: center; width: 50px; height: 50px; border-radius: 50%; background: var(--btn); color: #fff; font-size: 1.6rem; box-shadow: 0 6px 14px -6px rgba(250, 165, 0, 0.8); }
 
+/* чат-консультант: панель над виджетом, на телефоне лист снизу */
+.chat { position: fixed; z-index: 45; right: 20px; bottom: 100px; display: flex; flex-direction: column; width: min(384px, calc(100vw - 40px)); height: min(600px, calc(100dvh - 130px)); border-radius: 22px; background: #fff; box-shadow: 0 28px 60px -22px rgba(80, 48, 0, 0.5), 0 0 0 1px rgba(120, 72, 0, 0.08); overflow: hidden; transform-origin: 100% 100%; animation: chat-in 0.32s var(--ease); }
+.chat[hidden] { display: none; }
+.chat:focus { outline: none; }
+@keyframes chat-in { from { opacity: 0; transform: translateY(14px) scale(0.98); } }
+.chat__head { display: flex; align-items: center; gap: 12px; padding: 12px 12px 12px 14px; background: linear-gradient(180deg, #ffe08a 0%, var(--yellow) 100%); }
+.chat__ava { flex: none; width: 48px; height: 48px; border: 2px solid #fff; border-radius: 50%; background: radial-gradient(circle at 50% 40%, #ffe08a, var(--yellow)); object-fit: cover; }
+.chat__who { flex: 1; min-width: 0; }
+.chat__who h2 { font-size: 1rem; font-weight: 800; letter-spacing: -0.01em; }
+.chat__who p { display: flex; align-items: center; gap: 6px; margin-top: 2px; font-size: 0.8125rem; font-weight: 500; color: #3d3428; }
+.chat__who p::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.75); }
+.chat__x { flex: none; display: grid; place-items: center; width: 44px; height: 44px; border: 0; border-radius: 50%; background: rgba(255, 255, 255, 0.55); color: var(--dark); font-size: 1.15rem; cursor: pointer; transition: background 0.15s var(--ease); }
+.chat__x:hover { background: #fff; }
+.chat__log { flex: 1; display: flex; flex-direction: column; gap: 8px; padding: 16px 14px; overflow-y: auto; overscroll-behavior: contain; background: var(--bg); }
+.chat__msg { max-width: 86%; padding: 10px 14px; border-radius: 18px; font-size: 0.9375rem; line-height: 1.45; overflow-wrap: anywhere; }
+.chat__msg--bot { align-self: flex-start; border: 1px solid var(--line); border-bottom-left-radius: 6px; background: #fff; }
+.chat__msg--me { align-self: flex-end; border-bottom-right-radius: 6px; background: var(--yellow); color: var(--dark); font-weight: 600; }
+.chat__typing { display: inline-flex; gap: 4px; padding: 15px 16px; }
+.chat__typing span { width: 7px; height: 7px; border-radius: 50%; background: #c9b48a; animation: chat-dot 1s ease-in-out infinite; }
+.chat__typing span:nth-child(2) { animation-delay: 0.15s; }
+.chat__typing span:nth-child(3) { animation-delay: 0.3s; }
+@keyframes chat-dot { 0%, 80%, 100% { opacity: 0.35; transform: none; } 40% { opacity: 1; transform: translateY(-3px); } }
+.chat__acts { display: flex; flex-wrap: wrap; gap: 6px; padding: 2px 0 4px; }
+.chat__chip { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 0 14px; border: 1.5px solid var(--yellow); border-radius: 999px; background: #fff; color: var(--dark); font: 600 0.875rem/1.2 var(--font); text-decoration: none; cursor: pointer; transition: background 0.15s var(--ease), border-color 0.15s var(--ease); }
+.chat__chip:hover { border-color: var(--orange); background: var(--cream); }
+.chat__chip--tg { border-color: #1a7bab; background: #1a7bab; color: #fff; }
+.chat__chip--tg:hover { border-color: #136895; background: #136895; }
+.chat__chip--tg i { font-size: 1.15rem; }
+.chat__form { display: flex; gap: 8px; padding: 10px 10px 10px 12px; border-top: 1px solid var(--line); background: #fff; }
+.chat__input { flex: 1; min-width: 0; min-height: 46px; padding: 0 16px; border: 1.5px solid var(--line); border-radius: 999px; background: var(--bg); color: var(--text); font: 500 1rem var(--font); }
+.chat__input::placeholder { color: var(--muted); }
+.chat__input:focus-visible { outline: none; border-color: var(--orange); background: #fff; }
+.chat__send { flex: none; display: grid; place-items: center; width: 46px; height: 46px; border: 0; border-radius: 50%; background: var(--btn); color: var(--dark); font-size: 1.3rem; cursor: pointer; box-shadow: 0 6px 14px -6px rgba(250, 165, 0, 0.8); }
+.chat__send:hover { background: var(--btn-hover); }
+
 /* попап «Забронировать» */
 html:has(.modal[open]) { overflow: hidden; }
 .modal { width: 100%; max-width: min(720px, calc(100% - 32px)); max-height: calc(100dvh - 32px); padding: 0; border: 0; background: transparent; color: var(--text); overflow: visible; }
@@ -333,7 +367,7 @@ html:has(.modal[open]) { overflow: hidden; }
 
 /* планшет */
 @media (max-width: 1180px) {
-  .nav__links, .nav__city { display: none; }
+  .nav__links { display: none; }
   .menu { display: block; }
   .tours { grid-auto-columns: calc((100% - var(--gap)) / 2); margin-inline: calc(-1 * var(--pad)); padding-inline: var(--pad); scroll-padding-inline: var(--pad); }
   .why { grid-template-columns: minmax(0, 1fr); }
@@ -361,9 +395,12 @@ html:has(.modal[open]) { overflow: hidden; }
   .why__mascot { right: 50%; transform: translateX(50%); height: 260px; }
   .sec--mascot { padding-left: var(--pad); }
   .reviews__mascot { display: none; }
-  .cta__peek { height: 120%; }
-  .cta { flex-direction: column; align-items: flex-start; gap: 16px; padding: 24px 24px 24px 24px; background: linear-gradient(90deg, #ffe7a3 0%, #ffd056 45%, rgba(255, 186, 40, 0.2) 100%), url("img/v3/sunset.webp") 80% 30% / cover no-repeat, #f6a21a; }
-  .cta__plane { top: 18px; right: 20px; left: auto; transform: rotate(-10deg); font-size: 3rem; }
+  .cta__mascot { right: 16px; height: 280px; }
+  .cta__peek { height: 220px; }
+  /* баннер: фото полосой сверху, текст ниже на жёлтом, чтобы самолёт с фото не попадал под текст */
+  .cta { --cta-strip: clamp(118px, 24vw, 190px); flex-direction: column; align-items: flex-start; gap: 16px; padding: calc(var(--cta-strip) + 6px) 24px 24px; background: linear-gradient(170deg, #ffe7a3 0%, #ffd056 55%, #ffc23a 100%); }
+  .cta::before { content: ""; position: absolute; z-index: -1; inset: 0 0 auto; height: var(--cta-strip); border-radius: inherit; border-bottom-left-radius: 0; border-bottom-right-radius: 0; background: url("img/v3/cta-sunset.webp") 62% 30% / cover no-repeat; -webkit-mask-image: linear-gradient(180deg, #000 62%, transparent); mask-image: linear-gradient(180deg, #000 62%, transparent); }
+  .cta__plane { top: 16px; left: 16px; right: auto; transform: none; width: 48px; font-size: 1.5rem; }
   .cta--wide { padding-left: var(--pad); }
   .reviews__row { grid-auto-columns: 85%; margin-inline: calc(-1 * var(--pad)); padding-inline: var(--pad); scroll-padding-inline: var(--pad); }
   .reviews__nav { display: none; }
@@ -400,6 +437,8 @@ html:has(.modal[open]) { overflow: hidden; }
   .consult__text { display: none; }
   .consult__ava { width: 66px; height: 66px; left: -6px; bottom: -3px; }
   .consult__btn { width: 44px; height: 44px; font-size: 1.4rem; }
+  .chat { right: 8px; left: 8px; bottom: 8px; width: auto; height: min(640px, calc(100dvh - 16px)); border-radius: 20px; }
+  .chat-open .consult { display: none; }
   .cta__mascot, .cta__peek { display: none; }
   .cta--mascot, .cta--wide { margin-top: clamp(28px, 2.8vw, 40px); }
 }
@@ -412,6 +451,7 @@ html:has(.modal[open]) { overflow: hidden; }
   .field.is-invalid, .pill-field.is-invalid { animation: none; }
   html { scroll-behavior: auto; }
   .btn, .tour, .tile img, .go, .heart, .nav__drop > ul, .qa summary i, .consult { transition: none; }
+  .chat, .chat__typing span { animation: none; }
   .tour:hover, .tile:hover img, .go:hover { transform: none; }
 }
 

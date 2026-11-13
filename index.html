@@ -45,7 +45,6 @@
       <li><a href="#kontakty">Aloqa</a></li>
     </ul>
     <div class="nav__end">
-      <a class="nav__city" href="#ofis"><i class="ph-fill ph-map-pin" aria-hidden="true"></i>Chirchiq</a>
       <a class="nav__soc" href="https://t.me/Sundaytravel" aria-label="Telegram kanal"><img src="img/social/telegram-color.svg" width="24" height="24" alt=""></a>
       <a class="nav__soc" href="https://www.instagram.com/sunday_travel.uz" aria-label="Instagram"><img src="img/social/instagram-color.svg" width="24" height="24" alt=""></a>
       <a class="nav__soc" href="https://www.facebook.com/share/NtrDHMtj7HvjB6di/" aria-label="Facebook"><img src="img/social/facebook-color.svg" width="24" height="24" alt=""></a>
@@ -275,7 +274,7 @@
 
   <section class="wrap">
     <div class="cta cta--mascot">
-      <i class="cta__plane ph-fill ph-airplane-tilt" aria-hidden="true"></i>
+      <i class="cta__plane ph-fill ph-airplane-takeoff" aria-hidden="true"></i>
       <img class="cta__mascot" src="img/mascot/cta-boy.webp" width="324" height="640" alt="" loading="lazy">
       <div class="cta__text"><h2>Sayohatga tayyormisiz?</h2><p>Ariza qoldiring — sizga ideal turni tanlaymiz!</p></div>
       <button class="btn btn--dark" type="button" data-open-book>Ariza qoldirish<i class="ph-bold ph-arrow-right" aria-hidden="true"></i></button>
@@ -367,7 +366,7 @@
   </section>
 
   <section class="cta cta--wide">
-    <i class="cta__plane ph-fill ph-airplane-tilt" aria-hidden="true"></i>
+    <i class="cta__plane ph-fill ph-airplane-takeoff" aria-hidden="true"></i>
     <img class="cta__peek" src="img/mascot/cta2-peek.webp" width="386" height="446" alt="" loading="lazy">
     <div class="cta__text"><h2>Sayohatga tayyormisiz?</h2><p>Telegramda yozing — eng yaxshi turni tanlab beramiz!</p></div>
     <a class="btn btn--dark" href="https://t.me/Sundaytraveluz"><i class="ph-fill ph-telegram-logo" aria-hidden="true"></i>Telegramda yozish</a>
@@ -416,11 +415,117 @@
   </div>
 </footer>
 
-<a class="consult" href="https://t.me/Sundaytraveluz" aria-label="Telegramdagi onlayn maslahatchi">
+<a class="consult" href="https://t.me/Sundaytraveluz" aria-label="Maslahatchi bilan chatni ochish" aria-haspopup="dialog" aria-controls="chat" aria-expanded="false">
   <img class="consult__ava" src="img/mascot/widget-avatar.webp" width="160" height="160" alt="">
   <span class="consult__text"><strong>Onlayn maslahatchi</strong><span>Biz yoningizdamiz!<i class="ph-fill ph-heart" aria-hidden="true"></i></span></span>
   <span class="consult__btn"><i class="ph-fill ph-chat-circle-dots" aria-hidden="true"></i></span>
 </a>
+
+<section class="chat" id="chat" role="dialog" aria-labelledby="chat-t" tabindex="-1" hidden>
+  <header class="chat__head">
+    <img class="chat__ava" src="img/mascot/widget-avatar.webp" width="160" height="160" alt="">
+    <div class="chat__who"><h2 id="chat-t">Onlayn maslahatchi</h2><p>Biz yoningizdamiz!</p></div>
+    <button class="chat__x" type="button" data-chat-close aria-label="Yopish"><i class="ph-bold ph-x" aria-hidden="true"></i></button>
+  </header>
+  <div class="chat__log" role="log" aria-live="polite"></div>
+  <form class="chat__form" novalidate>
+    <input class="chat__input" name="msg" type="text" autocomplete="off" enterkeyhint="send" placeholder="Savolingizni yozing" aria-label="Xabar">
+    <button class="chat__send" type="submit" aria-label="Yuborish"><i class="ph-fill ph-paper-plane-right" aria-hidden="true"></i></button>
+  </form>
+</section>
+
+<template id="chat-flow">
+  <div data-node="start">
+    <p>Assalomu alaykum! Men Sunday Travel yordamchisiman.</p>
+    <p>Turlar boʻyicha maslahat beraman va arizangizni menejerga yetkazaman. Sizni nima qiziqtiradi?</p>
+    <button data-go="tour">Tur tanlash</button>
+    <button data-go="hot">Qaynoq turlar va narxlar</button>
+    <button data-go="docs">Hujjatlar va viza</button>
+    <button data-go="pay">Toʻlov</button>
+    <button data-go="dates">Sanalarni koʻchirish</button>
+    <button data-go="office">Ofis qayerda?</button>
+    <button data-go="ask">Boshqa savol</button>
+  </div>
+  <div data-node="tour" data-field="country" data-next="when" data-keys="tur tanla dam safar sayohat borish">
+    <p>Qayerga bormoqchisiz?</p>
+    <button>BAA</button><button>Misr</button><button>Turkiya</button><button>Gruziya</button>
+    <button>Ozarbayjon</button><button>Vyetnam</button><button>Tailand</button><button>Qatar</button>
+    <button>Ummon</button><button>Maldiv</button><button>Shri-Lanka</button><button>Malayziya</button>
+    <button>Hali hal qilmadik</button>
+  </div>
+  <div data-node="when" data-field="when" data-next="who">
+    <p>Safarni qachon rejalashtiryapsiz?</p>
+    <button>Yaqin bir oy ichida</button><button>1–3 oydan keyin</button><button>Keyinroq</button><button>Sanalar aniq</button>
+  </div>
+  <div data-node="who" data-field="who" data-next="name">
+    <p>Necha kishi boradi?</p>
+    <button>1 nafar katta</button><button>2 nafar katta</button><button>2 katta va 1 bola</button><button>Oila yoki guruh</button>
+  </div>
+  <div data-node="name" data-field="name" data-next="phone" data-input="text" data-placeholder="Ismingiz">
+    <p>Sizga qanday murojaat qilay?</p>
+  </div>
+  <div data-node="phone" data-field="phone" data-next="lead" data-input="tel" data-placeholder="+998 90 000 00 00">
+    <p>Telefon raqamingizni qoldiring: menejer siz bilan bogʻlanib, variantlarni yuboradi.</p>
+  </div>
+  <div data-node="lead">
+    <p>Rahmat! Ariza tayyor. Tugmani bosing, u Telegramda menejerga yuboriladi.</p>
+    <a data-tg="lead">Arizani Telegramga yuborish</a>
+    <button data-go="start">Boshiga</button>
+  </div>
+  <div data-node="hot" data-keys="qaynoq chegirma aksiya narx qancha arzon">
+    <p>Qaynoq turlar narxlari bilan shu sahifada, «Qaynoq turlar» boʻlimida. Sanalaringiz uchun aniq narxni menejer aytadi.</p>
+    <p>Har kuni Telegram kanalimizda yangi turlar.</p>
+    <a href="#goryashchie" data-chat-close>Qaynoq turlarni koʻrish</a>
+    <a data-tg="Assalomu alaykum! Sanalarim uchun tur narxini aytib bering.">Telegramda soʻrash</a>
+    <button data-go="tour">Tur tanlash</button>
+  </div>
+  <div data-node="docs" data-keys="viza hujjat pasport malumotnoma">
+    <p>Har bir davlat uchun roʻyxat oʻziga xos, menejer uni tur tanlashda yuboradi.</p>
+    <button data-go="tour">Tur tanlash</button>
+    <a data-tg="Assalomu alaykum! Safar uchun qanday hujjatlar kerak?">Telegramda soʻrash</a>
+  </div>
+  <div data-node="pay" data-keys="tolov muddatli karta naqd">
+    <p>Toʻlov usullarini menejer Telegramda aytib beradi.</p>
+    <a data-tg="Assalomu alaykum! Turni qanday toʻlash mumkin?">Telegramda soʻrash</a>
+    <button data-go="start">Boshiga</button>
+  </div>
+  <div data-node="dates" data-keys="kochir sana ozgar bekor">
+    <p>Sanalarni koʻchirish shartlarini menejer Telegramda aytib beradi.</p>
+    <a data-tg="Assalomu alaykum! Tur sanalarini koʻchirish haqida bilmoqchiman.">Telegramda soʻrash</a>
+    <button data-go="start">Boshiga</button>
+  </div>
+  <div data-node="office" data-keys="ofis manzil qayerda chirchiq telefon raqam qongiroq">
+    <p>Ofis Chirchiqda: Sh. Rashidov koʻchasi, 22-uy, 9-maktab chorrahasi, «Odob» roʻparasida.</p>
+    <p>Telefonlar: +998 90 038 75 00, +998 90 048 75 00.</p>
+    <a href="https://yandex.uz/maps/?text=%D0%A7%D0%B8%D1%80%D1%87%D0%B8%D0%BA%2C%20%D1%83%D0%BB.%20%D0%A8.%20%D0%A0%D0%B0%D1%88%D0%B8%D0%B4%D0%BE%D0%B2%D0%B0%2C%2022" target="_blank" rel="noopener">Xaritada</a>
+    <a href="tel:+998900387500">Qoʻngʻiroq qilish</a>
+  </div>
+  <div data-node="ask" data-field="question" data-next="sent" data-input="text" data-placeholder="Savolingiz">
+    <p>Savolingizni yozing, men uni Telegramda menejerga yetkazaman.</p>
+  </div>
+  <div data-node="sent">
+    <p>Tugmani bosing, savol Telegramda menejerga yuboriladi.</p>
+    <a data-tg="question">Telegramda soʻrash</a>
+    <button data-go="start">Boshiga</button>
+  </div>
+  <div data-node="unknown">
+    <p>Bu savolga menejer albatta javob beradi. Tugmani bosing, xabaringiz unga Telegramda yuboriladi.</p>
+    <a data-tg="question">Telegramda soʻrash</a>
+    <button data-go="tour">Tur tanlash</button>
+    <button data-go="start">Boshiga</button>
+  </div>
+  <div data-node="words">
+    <span data-k="hello">Assalomu alaykum!</span>
+    <span data-k="lead">Saytdagi chatdan ariza.</span>
+    <span data-k="country">Davlat</span>
+    <span data-k="when">Qachon</span>
+    <span data-k="who">Sayyohlar</span>
+    <span data-k="name">Ism</span>
+    <span data-k="phone">Telefon</span>
+    <span data-k="badname">Iltimos, sizga qanday murojaat qilishimni yozing.</span>
+    <span data-k="badphone">Raqamni tekshiring: kamida 9 ta raqam kerak.</span>
+  </div>
+</template>
 
 <dialog class="modal" id="book-modal" aria-labelledby="book-modal-t">
   <img class="modal__mascot" src="img/mascot/popup-agent.webp" width="400" height="760" alt="">
@@ -569,6 +674,143 @@
     const f = new FormData(modalForm);
     tg(`Assalomu alaykum! Tur bron qilmoqchiman: ${f.get('country')}, sanalar ${fmt(f.get('from'))}–${fmt(f.get('to'))}, ${f.get('tourists')}. Ism: ${f.get('name')}, telefon: ${f.get('phone')}.`);
     modal.close();
+  });
+
+  // чат-консультант: готовые ответы только по фактам сайта; заявку и вопросы без ответа передаёт менеджеру в Telegram
+  const chat = document.getElementById('chat');
+  const chatBtn = document.querySelector('.consult');
+  const chatLog = chat.querySelector('.chat__log');
+  const chatForm = chat.querySelector('.chat__form');
+  const chatInput = chatForm.msg;
+  const chatPh = chatInput.placeholder;
+  const flow = document.getElementById('chat-flow').content;
+  const node = (id) => flow.querySelector(`[data-node="${id}"]`);
+  const word = (k) => flow.querySelector(`[data-k="${k}"]`).textContent.trim();
+  const TOPICS = ['docs', 'pay', 'dates', 'office', 'hot', 'tour'];
+  const lead = {};
+  let step = null;
+  let asked = false; // последнее сообщение написано своими словами: в Telegram уйдёт оно, а не заготовка
+  let queue = Promise.resolve();
+  const pause = (ms) => new Promise((r) => setTimeout(r, reduce ? 0 : ms));
+  const toEnd = () => { chatLog.scrollTop = chatLog.scrollHeight; };
+  const bubble = (text, who) => {
+    const b = document.createElement('p');
+    b.className = 'chat__msg chat__msg--' + who;
+    b.textContent = text;
+    chatLog.append(b);
+    toEnd();
+  };
+  const typing = async () => {
+    const t = document.createElement('p');
+    t.className = 'chat__msg chat__msg--bot chat__typing';
+    t.setAttribute('aria-hidden', 'true');
+    t.innerHTML = '<span></span><span></span><span></span>';
+    chatLog.append(t);
+    toEnd();
+    await pause(520);
+    t.remove();
+  };
+  const leadText = () => word('hello') + ' ' + word('lead') + '\n'
+    + ['country', 'when', 'who', 'name', 'phone'].filter((k) => lead[k]).map((k) => word(k) + ': ' + lead[k]).join('\n');
+  const tgHref = (v) => 'https://t.me/Sundaytraveluz?text=' + encodeURIComponent(
+    v === 'lead' ? leadText() : v === 'question' || asked ? word('hello') + ' ' + lead.question : v);
+
+  const render = async (id) => {
+    const n = node(id);
+    chatLog.querySelectorAll('.chat__acts').forEach((a) => a.remove());
+    step = n.dataset.field ? n : null;
+    for (const p of n.querySelectorAll('p')) {
+      await typing();
+      bubble(p.textContent.trim(), 'bot');
+    }
+    const acts = [...n.children].filter((el) => el.matches('button, a'));
+    if (acts.length) {
+      const box = document.createElement('div');
+      box.className = 'chat__acts';
+      box.dataset.node = id;
+      acts.forEach((el) => {
+        const c = el.cloneNode(true);
+        c.classList.add('chat__chip');
+        if (c.tagName === 'BUTTON') c.type = 'button';
+        if (c.dataset.tg) {
+          c.href = tgHref(c.dataset.tg);
+          c.target = '_blank';
+          c.rel = 'noopener';
+          c.classList.add('chat__chip--tg');
+          c.insertAdjacentHTML('afterbegin', '<i class="ph-fill ph-telegram-logo" aria-hidden="true"></i>');
+        }
+        box.append(c);
+      });
+      chatLog.append(box);
+    }
+    const tel = n.dataset.input === 'tel';
+    chatInput.type = tel ? 'tel' : 'text';
+    chatInput.inputMode = tel ? 'tel' : 'text';
+    chatInput.autocomplete = n.dataset.field === 'name' ? 'name' : tel ? 'tel' : 'off';
+    chatInput.placeholder = n.dataset.placeholder || chatPh;
+    toEnd();
+    if (chat.hidden) return;
+    if (n.dataset.input) chatInput.focus();
+    else if (chat.contains(document.activeElement) || document.activeElement === document.body) {
+      chatLog.querySelector('.chat__chip')?.focus({ preventScroll: true });
+    }
+  };
+  const say = (id) => { queue = queue.then(() => render(id)); };
+  const reply = (k) => { queue = queue.then(async () => { await typing(); bubble(word(k), 'bot'); }); };
+
+  const openChat = () => {
+    chat.hidden = false;
+    chatBtn.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('chat-open');
+    if (!chatLog.childElementCount) say('start');
+    chat.focus({ preventScroll: true });
+  };
+  const closeChat = (back) => {
+    chat.hidden = true;
+    chatBtn.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('chat-open');
+    if (back) chatBtn.focus({ preventScroll: true });
+  };
+  chatBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (chat.hidden) openChat(); else closeChat(true);
+  });
+  chat.querySelector('.chat__x').addEventListener('click', () => closeChat(true));
+  chat.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeChat(true); });
+
+  chatLog.addEventListener('click', (e) => {
+    const c = e.target.closest('.chat__chip');
+    if (!c) return;
+    if (c.hasAttribute('data-chat-close')) { closeChat(false); return; }
+    if (c.tagName === 'A') return;
+    const from = node(c.closest('.chat__acts').dataset.node);
+    const text = c.textContent.trim();
+    bubble(text, 'me');
+    asked = false;
+    if (c.dataset.go) say(c.dataset.go);
+    else if (from.dataset.field) { lead[from.dataset.field] = text; say(from.dataset.next); }
+  });
+
+  chatForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const text = chatInput.value.trim();
+    if (!text) return;
+    bubble(text, 'me');
+    chatInput.value = '';
+    if (step) {
+      const f = step.dataset.field;
+      if (f === 'name' && text.length < 2) return reply('badname');
+      if (f === 'phone' && text.replace(/\D/g, '').length < 9) return reply('badphone');
+      lead[f] = text;
+      say(step.dataset.next);
+      return;
+    }
+    // свободный вопрос: тема по ключевым словам, иначе вопрос уходит менеджеру
+    const q = text.toLowerCase().replace(/\u0451/g, '\u0435').replace(/['`\u02bb\u02bc\u2018\u2019]/g, '');
+    const hit = TOPICS.find((id) => node(id).dataset.keys.split(' ').some((k) => q.includes(k)));
+    lead.question = text;
+    asked = true;
+    say(hit || 'unknown');
   });
 
   // слайдер горящих туров: кнопки листают на ширину видимой части
