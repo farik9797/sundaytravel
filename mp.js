@@ -132,7 +132,8 @@
     };
     const text = form.dataset.tg
       .replace(/\{(\w+)\}/g, (_, k) => fmt(String(val(k)).trim()) || '—')
-      .replace(/, обратно —/, '');
+      .replace(/, обратно —/, '')
+      .replace(/, туда —/, '');
     window.open('https://t.me/Sundaytraveluz?text=' + encodeURIComponent(text), '_blank', 'noopener');
   }));
 })();
